@@ -1,5 +1,7 @@
 # CIFAR-10 Convolutional Neural Networks
 
+Author: Ivan Cubillos
+
 ## Problem Description
 
 This project explores convolutional neural networks (CNNs) as architectural components rather than black boxes. The goal is to analyze how architectural decisions introduce inductive bias and affect learning, performance, and efficiency when working with image-based data.
@@ -124,6 +126,7 @@ Finally, we get the AWS error because the education lab does not have the option
 ![Error for deploy](img/error.png)
 
 Despite the deployment limitation, the workflow demonstrates an understanding of the standard SageMaker model lifecycle: training, packaging, storage in S3, and deployment.
+
 ---
 
 ## Final Remarks
