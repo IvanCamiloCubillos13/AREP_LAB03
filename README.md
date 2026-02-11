@@ -2,7 +2,7 @@
 
 ## Problem Description
 
-This project explores convolutional neural networks (CNNs as architectural components rather than black boxes. The goal is to analyze how architectural decisions introduce inductive bias and affect learning, performance, and efficiency when working with image-based data.
+This project explores convolutional neural networks (CNNs) as architectural components rather than black boxes. The goal is to analyze how architectural decisions introduce inductive bias and affect learning, performance, and efficiency when working with image-based data.
 
 A fully connected neural network is first implemented as a baseline reference. Then, a convolutional neural network is designed from scratch and compared against the baseline. Finally, a controlled experiment evaluates the impact of convolutional kernel size on performance.
 
@@ -98,6 +98,32 @@ Convolutional layers introduce an inductive bias that assumes local patterns are
 
 Convolutional architectures are less suitable for problems where spatial or local structure is not meaningful, such as tabular data or unordered feature sets.
 
+---
+
+### Dataset Loading in SageMaker
+
+The CIFAR-10 dataset could not be downloaded using `keras.datasets` due to network restrictions in the SageMaker student environment.
+To address this, the dataset was downloaded externally and loaded manually from local files.
+
+This approach ensures full reproducibility and avoids dependency on external network access.
+
+![Error with normal version](img/tar.png)
+![File from kaggle descompress](img/descompress.png)
+![Instructions](img/ins.png)
+
+The trained CNN model was packaged into a .tar.gz archive following SageMaker conventions. The archive contains the saved Keras model and was uploaded to an S3 bucket to simulate a deployment workflow. Due to account restrictions in the student environment, endpoint creation was not permitted.
+![Bucket for model](img/bucket.png)
+![Model](img/save_model.png)
+![Model for bucket](img/compress_model.png)
+![Bucket with model](img/bucket_with_model.png)
+
+As the next step in the deployment, we create the model with a route to the bucket, with our ARN.
+![Model](img/model.png)
+
+Finally, we get the AWS error because the education lab does not have the option to deploy endpoints available.
+![Error for deploy](img/error.png)
+
+Despite the deployment limitation, the workflow demonstrates an understanding of the standard SageMaker model lifecycle: training, packaging, storage in S3, and deployment.
 ---
 
 ## Final Remarks
